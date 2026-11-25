@@ -1180,13 +1180,13 @@ def kader_page():
             df_map['Total_Risiko'] = df_map[['Stunting', 'Wasting', 'Overweight', 'Underweight']].sum(axis=1)
             df_map['Ukuran_Titik'] = (df_map['Total_Risiko'] * 4) + 6
 
-            fig = px.scatter_mapbox(
+            fig = px.scatter_map(
                 df_map, lat="Lat", lon="Lon", color="Total_Risiko", size="Ukuran_Titik",
                 hover_name="Nama_Balita",
                 hover_data=["Kecamatan", "Kelurahan", "Nama_Posyandu", "Alamat_Posyandu", "ZS_Stunting", "ZS_Wasting", "ZS_Overweight", "ZS_Underweight"],
                 color_continuous_scale=["#1B5E20", "#Fbc02D", "#E65100", "#B71C1C"],
                 range_color=[0, 4],
-                size_max=18, zoom=11.5, mapbox_style="open-street-map"
+                size_max=18, zoom=11.5, map_style="open-street-map"
             )
             fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
             st.plotly_chart(fig, use_container_width=True)
@@ -1274,13 +1274,13 @@ def admin_page():
             df_map = df_db.copy()
             df_map['Total_Risiko'] = df_map[['Stunting', 'Wasting', 'Overweight', 'Underweight']].sum(axis=1)
             df_map['Ukuran_Titik'] = (df_map['Total_Risiko'] * 4) + 6
-            fig = px.scatter_mapbox(
+            fig = px.scatter_map(
                 df_map, lat="Lat", lon="Lon", color="Total_Risiko", size="Ukuran_Titik",
                 hover_name="Nama_Balita",
                 hover_data=["Kecamatan", "Kelurahan", "Nama_Posyandu", "Alamat_Posyandu", "ZS_Stunting", "ZS_Wasting", "ZS_Overweight", "ZS_Underweight"],
                 color_continuous_scale=["#1B5E20", "#Fbc02D", "#E65100", "#B71C1C"],
                 range_color=[0, 4],
-                size_max=18, zoom=11.5, mapbox_style="open-street-map"
+                size_max=18, zoom=11.5, map_style="open-street-map"
             )
             fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
             st.plotly_chart(fig, use_container_width=True)
